@@ -1,0 +1,20 @@
+<h1 class="main-title"><%= @restaurant.name %></h1>
+      <div class="card-product">
+        <%= image_tag "https://i.picsum.photos/id/#{rand(1000)}/150/150.jpg", alt: "restaurant" %>
+        <div class="card-product-infos">
+          <h2><%= @restaurant.name %></h2>
+          <p><%= @restaurant.category%></p>
+          <p><em><%= @restaurant.address%></em></p>
+          <p><%= @restaurant.phone_number%></p>
+        </div>
+      </div>
+
+<h2>Reviews</h2>
+<% @restaurant.reviews.each do |review| %>
+  <div class="notification">
+  <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+  <div class="notification-content">
+    <p><small>14th January</small></p>
+    <p><%= review.content %></p>
+  </div>
+<% end %>
