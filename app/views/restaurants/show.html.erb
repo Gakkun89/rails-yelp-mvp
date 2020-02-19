@@ -1,6 +1,6 @@
 <h1 class="main-title"><%= @restaurant.name %></h1>
       <div class="card-product">
-        <%= image_tag "https://i.picsum.photos/id/#{rand(1000)}/150/150.jpg", alt: "restaurant" %>
+        <%= image_tag "https://i.picsum.photos/id/#{rand(100)}/150/150.jpg", alt: "restaurant" %>
         <div class="card-product-infos">
           <h2><%= @restaurant.name %></h2>
           <p><%= @restaurant.category%></p>
@@ -9,12 +9,24 @@
         </div>
       </div>
 
+<h1 class="main-title">Add a new review</h1>
+<div class="container bg-light rounded border">
+  <%= simple_form_for @review do |f| %>
+    <%= f.input :content%>
+    <%= f.input :rating, collection: [0,1,2,3,4,5], include_blank: false %>
+    <%= f.submit "Add restaurant", class: "mb-3 btn btn-primary" %>
+</div>
+<% end %>
+
+
+
 <h2>Reviews</h2>
 <% @restaurant.reviews.each do |review| %>
   <div class="notification">
   <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
   <div class="notification-content">
-    <p><small>14th January</small></p>
+    <p><%= "*" * review.rating %></p>
     <p><%= review.content %></p>
   </div>
+</div>
 <% end %>

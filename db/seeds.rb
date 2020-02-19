@@ -11,6 +11,6 @@
   Review.create!(
     content: Faker::Restaurant.review,
     rating: rand(5),
-    restaurant: Restaurant.find(rand(10))
+    restaurant: Restaurant.find(rand(1..10))
   )
 end
